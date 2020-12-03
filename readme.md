@@ -14,11 +14,21 @@ react-sponge can generate component skeleton. It will generate components in src
 npm i -g react-sponge
 ```
 
-> create functional component with scss and jsx
+> create class component with scss and jsx
 
 ``` code
 
 % rsg c 
+% what is the folder name? <your-folder-name>
+% what is the file name? <your-file-name>
+
+```
+
+> create functional component with scss and jsx
+
+``` code
+
+% rsg f 
 % what is the folder name? <your-folder-name>
 % what is the file name? <your-file-name>
 

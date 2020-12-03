@@ -12,6 +12,7 @@
         "generator"
     ],
     "author": "Adam Jiang",
+    "homepage": "https://https://github.com/jzequn/react-sponge",
     "license": "MIT",
     "dependencies": {
         "commander": "^6.2.0"
