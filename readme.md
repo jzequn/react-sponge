@@ -86,6 +86,10 @@ export default your-file-name;
    
    I don't know why this happen. Probabaly solve the problem later...
 
+Solution: 
+Problem solved!!!🤣
+[node.js - createInterface prints double in terminal - Stack Overflow](https://stackoverflow.com/questions/24661774/createinterface-prints-double-in-terminal)
+
 ## License MIT
 
 End of the file
