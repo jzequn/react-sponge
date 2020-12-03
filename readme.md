@@ -85,3 +85,7 @@ export default your-file-name;
    However, the name for generated components will be correct. 
    
    I don't know why this happen. Probabaly solve the problem later...
+
+## License MIT
+
+End of the file
