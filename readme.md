@@ -79,9 +79,9 @@ export default your-file-name;
 
 ## issues: 
 
-1. when user types in <your-folder-name> or <your-file-name>,
+1. when user types in 'your-folder-name' or 'your-file-name',
 
-   The file console will print out <your-folder-name> as <yyoouurr--ffoollddeerr--nnaammee> ...
+   The file console will print out <your-folder-name> as 'yyoouurr--ffoollddeerr--nnaammee' ...
    However, the name for generated components will be correct. 
    
    I don't know why this happen. Probabaly solve the problem later...
