@@ -1,0 +1,20 @@
+{
+    "name": "react-sponge",
+    "version": "1.0.3",
+    "description": "React component skeleton generator.",
+    "main": "./bin/index.js",
+    "bin": {
+        "rsg": "./bin/index.js"
+    },
+    "keywords": [
+        "react",
+        "component",
+        "generator"
+    ],
+    "author": "Adam Jiang",
+    "license": "MIT",
+    "dependencies": {
+        "commander": "^6.2.0"
+    },
+    "devDependencies": {}
+}
