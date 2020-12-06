@@ -34,9 +34,7 @@ your project
 Here is how DropdownMenu.js looks like.
 
 ``` jsx
-import React, {
-    Component
-} from "react";
+import React, {Component} from "react";
 import "./DropdownMenu.css";
 
 class DropdownMenu extends Component {
@@ -57,7 +55,7 @@ class DropdownMenu extends Component {
           </>
         )}
     }
-    export default DropdownMenu;
+export default DropdownMenu;
 ```
 
 Create functional component
