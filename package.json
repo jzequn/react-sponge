@@ -1,6 +1,6 @@
 {
     "name": "react-sponge",
-    "version": "2.0.1",
+    "version": "2.0.2",
     "description": "React component skeleton generator.",
     "main": "./bin/index.js",
     "bin": {

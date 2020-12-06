@@ -4,15 +4,15 @@ react-sponge can generate component skeleton. It will generate components in src
 
 ## How to use?
 
->> Installation
+Installation
 
-``` code
+``` console
 % npm i -g react-sponge
 ```
 
->> create class component
+Create class component
 
-``` code
+``` console
 
 % rsg g c components/dropdown-menu/DropdownMenu
 
@@ -20,7 +20,7 @@ react-sponge can generate component skeleton. It will generate components in src
 
 This code will generate the following folder structure and react class component.
 
-``` structure
+``` console
 your project
 
     - src
@@ -33,38 +33,36 @@ your project
 
 Here is how DropdownMenu.js looks like.
 
-``` code
-
-import React, { Component } from "react";
+``` jsx
+import React, {
+    Component
+} from "react";
 import "./DropdownMenu.css";
 
 class DropdownMenu extends Component {
-  constructor(props) {
+    constructor(props) {
 
-    super(props);
+        super(props);
 
-    this.state = {
+        this.state = {
 
-    };
+        };
 
-  }
+    }
 
-  render() {
+    render() {
+        return (
+          < >
 
-    return (<>
-
-    </>)
-
-  }
-
-}
-export default DropdownMenu;
-
+          </>
+        )}
+    }
+    export default DropdownMenu;
 ```
 
->> create functional component
+Create functional component
 
-``` code
+``` shell
 
 % rsg g f ShoppingList -p scss
 
@@ -72,10 +70,10 @@ export default DropdownMenu;
 
 This code will generate the following folder structure and react functional component.
 
-``` structure
+``` console
 your project
 
-    - src
+    - src 
       - ShoppingList.js
       - ShoppingList.scss
 
@@ -83,19 +81,19 @@ your project
 
 Here is how ShoppingList.js looks like.
 
-``` code
-
+``` jsx
 import React from "react";
 import "./ShoppingList.scss";
 
-const ShoppingList = () => (
-      <>
-      
-      </>
+const ShoppingList = () => ( 
+   <>
+
+   </>
 )
 
 export default ShoppingList;
-
 ```
 
-## License MIT
+## License
+
+MIT
