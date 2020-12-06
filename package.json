@@ -1,6 +1,6 @@
 {
     "name": "react-sponge",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "description": "React component skeleton generator.",
     "main": "./bin/index.js",
     "bin": {
@@ -12,7 +12,7 @@
         "generator"
     ],
     "author": "Adam Jiang",
-    "homepage": "https://github.com/jzequn/react-sponge/readme.md",
+    "homepage": "https://github.com/jzequn/react-sponge#readme.md",
     "repository": {
         "type": "git",
         "url": "https://github.com/jzequn/react-sponge.git"
