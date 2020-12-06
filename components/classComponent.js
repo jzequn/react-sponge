@@ -1,68 +1,105 @@
 const path = require("path");
 const fs = require("fs");
-const readline = require("readline");
+const chalk = require("chalk");
+const {
+  classComponentTemplate,
+  funtionalComponentTemplate,
+} = require("./template");
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  terminal: false,
-});
+const state = {
+  template: null,
+  preprocessor: "css",
+  scriptType: "js",
+  dir: "",
+  filename: "",
+  scriptPath: "",
+  stylePath: "",
+};
 
-const template = (component) => `
-import React, { Component } from \"react\";
-import \"./${component}.scss\";
+/**
+ *@param {string} type
+ *   type of component, either function or class. Value should be f or c
+ *@param {string} name
+ *   name for the component to be generated
+ *@param {string} preprocessor
+ *   the css preprocessor
+ *@param {boolean} typescript
+ *   should be typescript or not
+ *
+ */
+const createReactComponent = (type, name, preprocessor, typescript) => {
+  setUpState(type, name, preprocessor, typescript);
 
-class ${component} extends Component {
-  constructor(props) {
-    super(props);
+  // in root working directory -> 'root/src/...'
+  const component_directory = path.join(process.cwd(), `./src/${state.dir}`);
+  buildDirectories(component_directory);
 
-    this.state = {
+  state.scriptPath = `${component_directory}/${state.filename}.${state.scriptType}`;
+  state.stylePath = `${component_directory}/${state.filename}.${state.preprocessor}`;
 
-    };
+  writeFiles(state.scriptPath, state.stylePath);
+};
+
+const setUpState = (type, name, preprocessor, typescript) => {
+  state.template = chooseTemplate(type);
+  state.preprocessor = preprocessor ? preprocessor : "css";
+  state.scriptType = typescript ? "ts" : "js";
+
+  parseName(name);
+};
+const parseName = (name) => {
+  // split the name as directory and filename.
+  // how to handle error? if there are special characters in the name?
+  const regex = /\//g;
+  const match = [...name.matchAll(regex)];
+
+  if (!match || match.length === 0) {
+    state.filename = name;
+  } else {
+    const lastFolderIndex = match[match.length - 1].index;
+
+    // store them in state
+    state.filename = name.substring(lastFolderIndex + 1);
+    state.dir = name.substr(0, lastFolderIndex);
   }
+};
 
-  render() {
-    return (<>
-
-    </>)
-  }
-
-}
-export default ${component};
-`;
-
-const createClassComponent = () => {
-  rl.question("What is the folder name? ", function (folder_name) {
-    rl.question("What is the file name? ", function (component) {
-      // console.log(
-      //   `Your folder_name is ${folder_name}, your file name is ${component}.jsx and ${component}.scss `
-      // );
-
-      // in root working directory -> 'root/src/...'
-      const root_dir = path.join(process.cwd(), `./src/${folder_name}`);
-      if (!fs.existsSync(root_dir)) {
-        // create folder
-        fs.mkdirSync(root_dir);
-      }
-
-      const jsxPath = `${root_dir}/${component}.jsx`;
-      const scssPath = `${root_dir}/${component}.scss`;
-
-      // create jsx file
-      fs.writeFile(jsxPath, template(component), function (err) {
-        if (err) return console.log(err);
-        console.log(`${folder_name}/${component}.jsx created!!`);
-      });
-
-      // create scss file
-      fs.writeFile(scssPath, "", function (err) {
-        if (err) return console.log(err);
-        console.log(`${folder_name}/${component}.scss created!!`);
-      });
-
-      rl.close();
+const buildDirectories = (path) => {
+  // build directories recursively with given path
+  if (!fs.existsSync(path)) {
+    fs.mkdirSync(path, { recursive: true }, (err) => {
+      if (err) throw err;
     });
+  }
+};
+
+const writeFiles = (scriptPath, stylePath) => {
+  // create script file
+  fs.writeFile(
+    scriptPath,
+    state.template(state.filename, state.preprocessor),
+    function (err) {
+      if (err) return console.log(err);
+      console.log(chalk.blue(`${scriptPath} created!!`));
+    }
+  );
+
+  // create style file
+  fs.writeFile(stylePath, "", function (err) {
+    if (err) return console.log(err);
+    console.log(chalk.blue(`${stylePath} created!!`));
   });
 };
 
-exports.createClassComponent = createClassComponent;
+const chooseTemplate = (type) => {
+  switch (type) {
+    case "class" || "c":
+      return classComponentTemplate;
+    case "function" || "f":
+      return funtionalComponentTemplate;
+    default:
+      return classComponentTemplate;
+  }
+};
+
+exports.createReactComponent = createReactComponent;

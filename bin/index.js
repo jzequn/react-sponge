@@ -1,36 +1,29 @@
 #!/usr/bin/env node
 
 const { program } = require("commander");
-// const chalk = require('chalk')
-const { createClassComponent } = require("../components/classComponent");
-const {
-  createFunctionalComponent,
-} = require("../components/functionalComponent");
-program.version("1.0.0").name("react-sponge");
-
-// program
-//   .option('-c, --class', 'create react class component',createClassComponent)
-//   .option('-f, --funtional', 'create react functional component',createFunctionalComponent)
+const { createReactComponent } = require("../components/classComponent");
+program.version("2.0.0").name("react-sponge").usage("command");
 
 program
-  .command("class")
-  .description("create react class component")
-  .alias("c")
-  .action(()=>{
-    
-    createClassComponent();
-
+  .command("generate <type> <name>")
+  .description("create react component")
+  .alias("g")
+  .option("-p,--preprocessor [value]", "css preprocessor to use")
+  // .option("-t,--typescript", "use typescript instead of javascript")
+  .action(function (type, name, options) {
+    // console.log(
+    //   "c/class",
+    //   type,
+    //   name,
+    //   options.preprocessor,
+    //   options.typescript
+    // );
+    createReactComponent(
+      type,
+      name,
+      options.preprocessor,
+      options.typescript ? true : false
+    );
   });
 
-program
-  .command("functional")
-  .description("create functional component")
-  .alias("f")
-  .action(createFunctionalComponent);
-
 program.parse(process.argv);
-
-
-if(program.class){
-  console.log(program.class);
-}

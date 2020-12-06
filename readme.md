@@ -1,36 +1,20 @@
 # react-sponge
 
-react-sponge is named after spongebob squarepants
-
-## What is react-sponge for?
-
 react-sponge can generate component skeleton. It will generate components in src folder of your project.
 
 ## How to use?
 
-> Installation
+>> Installation
 
 ``` code
-npm i -g react-sponge
+% npm i -g react-sponge
 ```
 
-> create class component with scss and jsx
+>> create class component
 
 ``` code
 
-% rsg c 
-% what is the folder name? <your-folder-name>
-% what is the file name? <your-file-name>
-
-```
-
-> create functional component with scss and jsx
-
-``` code
-
-% rsg f 
-% what is the folder name? <your-folder-name>
-% what is the file name? <your-file-name>
+% rsg g c components/dropdown-menu/DropdownMenu
 
 ```
 
@@ -40,20 +24,21 @@ This code will generate the following folder structure and react class component
 your project
 
     - src
-      - your-folder-name
-        - your-file-name.jsx
-        - your-file-name.scss
+      - components
+        - dropdown-menu
+          - DropdownMenu.js
+          - DropdownMenu.css
 
 ```
 
-here is what <your-file-name.jsx> look like.
+Here is how DropdownMenu.js looks like.
 
 ``` code
 
 import React, { Component } from "react";
-import "./your-file-name.scss";
+import "./DropdownMenu.css";
 
-class your-file-name extends Component {
+class DropdownMenu extends Component {
   constructor(props) {
 
     super(props);
@@ -73,23 +58,44 @@ class your-file-name extends Component {
   }
 
 }
-export default your-file-name;
+export default DropdownMenu;
 
 ```
 
-## issues: 
+>> create functional component
 
-1. when user types in 'your-folder-name' or 'your-file-name',
+``` code
 
-   The file console will print out <your-folder-name> as 'yyoouurr--ffoollddeerr--nnaammee' ...
-   However, the name for generated components will be correct. 
-   
-   I don't know why this happen. Probabaly solve the problem later...
+% rsg g f ShoppingList -p scss
 
-Solution: 
-Problem solved!!!🤣
-[node.js - createInterface prints double in terminal - Stack Overflow](https://stackoverflow.com/questions/24661774/createinterface-prints-double-in-terminal)
+```
+
+This code will generate the following folder structure and react functional component.
+
+``` structure
+your project
+
+    - src
+      - ShoppingList.js
+      - ShoppingList.scss
+
+```
+
+Here is how ShoppingList.js looks like.
+
+``` code
+
+import React from "react";
+import "./ShoppingList.scss";
+
+const ShoppingList = () => (
+      <>
+      
+      </>
+)
+
+export default ShoppingList;
+
+```
 
 ## License MIT
-
-End of the file
