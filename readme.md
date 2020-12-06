@@ -2,7 +2,7 @@
 
 react-sponge can generate component skeleton. It will generate components in src folder of your project.
 
-## How to use?
+## How to use
 
 Installation
 
@@ -71,7 +71,7 @@ This code will generate the following folder structure and react functional comp
 ``` console
 your project
 
-    - src 
+    - src
       - ShoppingList.js
       - ShoppingList.scss
 
@@ -83,7 +83,7 @@ Here is how ShoppingList.js looks like.
 import React from "react";
 import "./ShoppingList.scss";
 
-const ShoppingList = () => ( 
+const ShoppingList = () => (
    <>
 
    </>
