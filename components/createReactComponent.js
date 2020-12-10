@@ -44,7 +44,6 @@ const setUpState = (type, name, preprocessor, typescript) => {
   state.template = chooseTemplate(type);
   state.preprocessor = preprocessor ? preprocessor : "css";
   state.scriptType = typescript ? "ts" : "js";
-
   parseName(name);
 };
 const parseName = (name) => {
@@ -93,9 +92,13 @@ const writeFiles = (scriptPath, stylePath) => {
 
 const chooseTemplate = (type) => {
   switch (type) {
-    case "class" || "c":
+    case "class":
       return classComponentTemplate;
-    case "function" || "f":
+    case "c":
+      return classComponentTemplate;
+    case "function":
+      return funtionalComponentTemplate;
+    case "f":
       return funtionalComponentTemplate;
     default:
       return classComponentTemplate;

@@ -1,4 +1,4 @@
-# react-sponge
+# react-sponge (rsg)
 
 react-sponge can generate component skeleton. It will generate components in src folder of your project.
 
@@ -10,7 +10,22 @@ Installation
 % npm i -g react-sponge
 ```
 
-Create class component
+Get help
+
+``` code
+% rsg help                      display help for rsg 
+% rsg help g                    display help for rsg generate
+```
+
+rsg command
+
+``` console
+rsg g <type> <name> [-p] 
+```
+
+Examples :
+
+1. Create class component
 
 ``` console
 
@@ -50,7 +65,7 @@ class DropdownMenu extends Component {
 
     render() {
         return (
-          < >
+          <>
 
           </>
         )}
@@ -58,7 +73,7 @@ class DropdownMenu extends Component {
 export default DropdownMenu;
 ```
 
-Create functional component
+2. Create functional component
 
 ``` shell
 
@@ -94,4 +109,4 @@ export default ShoppingList;
 
 ## License
 
-MIT
+[MIT](LICENSE)

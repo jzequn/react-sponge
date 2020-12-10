@@ -2,7 +2,7 @@
 
 const { program } = require("commander");
 const { createReactComponent } = require("../components/createReactComponent");
-program.version("2.0.3").name("react-sponge").usage("command");
+program.version("2.0.4").name("react-sponge").usage("command");
 
 program
   .command("generate <type> <name>")
